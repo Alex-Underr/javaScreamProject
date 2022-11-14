@@ -1,2 +1,13 @@
-@import './common';
-@import './example';
+// base
+@import './base/common';
+@import './base/res';
+@import './base/container';
+
+// utils
+@import './utils/vissualy-hidden';
+
+// styles
+@import './header';
+@import './card-list';
+@import './footer';
+@import './modal';
