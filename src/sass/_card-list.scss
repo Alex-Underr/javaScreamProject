@@ -1,0 +1,48 @@
+.movie {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: 32px 16px;
+  }
+}
+.movie__item {
+  max-width: 480px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 395px;
+  }
+}
+.movie__title {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.movie__details {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: capitalize;
+  color: #ff6b08;
+}
+.movie__genre {
+  margin-right: 10px;
+}
+.movie__year-of-relise {
+  margin-left: 10px;
+}
