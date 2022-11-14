@@ -1,0 +1,86 @@
+.backdrop {
+
+    overflow: scroll;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 10;
+
+    transition-property: opacity, visibility;
+    transition-duration: 300ms;
+    transition-timing-function: linear;
+    opacity: 1;
+    pointer-events: initial;
+    visibility: visible;
+    @media screen and (max-width:1279px) {
+            background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    &.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+}
+
+.modal {
+    
+    background-color: white;
+    padding: 48px 20px 40px 20px;
+    max-width: 280px;
+    width: 100%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    @media screen and (min-width:768px) {
+        max-width: 704px;
+        padding: 40px 72px 40px 36px;
+    }
+
+    @media screen and (min-width:1280px) {
+        max-width: 806px;
+        padding: 40px 12px;
+    }
+
+
+    &-btn{
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background-color: transparent;
+        border: none;
+
+        height: 30px;
+        width: 30px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+    }
+    }
+
+    .modal__container{
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        @media screen and (min-width:768px) {
+            gap: 68px;
+            flex-wrap: nowrap;
+        }
+        
+        @media screen and (min-width:1280px) {
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+    }
+    

@@ -1,0 +1,143 @@
+.modal{
+    &__title{font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+
+    color: #000000;
+
+    @media screen and (min-width:1280px) {
+        font-size: 30px;
+        line-height: 1.17;
+    }}
+    &__content{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__btn__active{
+    border: none;
+    color: #FFFFFF;
+    background-color: #FF6B01;
+}
+}
+
+.film{
+    &__item{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.3;
+    color: #8C8C8C;
+    }
+
+    &__text{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.33;
+        color: #000000;
+        text-transform: uppercase;
+        // margin:0 auto;
+        }
+
+    &__item{
+       display: flex;
+       justify-content: space-between;
+    }
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+       
+    }
+    
+}
+
+.btn{
+font-family: 'Roboto', sans-serif;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+text-align: center;
+color: #000000;
+text-transform:uppercase;
+
+border: 1px solid #000000;
+border-radius: 5px;
+background-color: transparent;
+height: 44px;
+min-width: 110px;
+
+    &:hover,
+    &:focus{
+        border: none;
+        color: #FFFFFF;
+        background-color: #FF6B01;
+    }
+
+    @media screen and (min-width:768px) {
+        min-width: 125px;
+    }
+    
+    @media screen and (min-width:1280px) {
+        min-width: 136px;
+        margin-left: 8px;
+    }
+
+    &__wrapper{
+    display: flex;
+    gap: 20px;
+    @media screen and (min-width:768px) {
+        gap: 15px;
+    }
+}
+}
+
+
+
+
+.description{
+    &__headline{  align-items: center;
+    text-transform: uppercase;
+
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    margin-bottom: 8px;}
+
+    &_text{
+ font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 1.66;
+
+
+color: #000000;
+}
+  
+}
+
+
+.image__modal{
+    width: 240px;
+    height: auto;
+    border-radius: 5px;
+
+    @media screen and (min-width:768px) {
+        width: 264px;
+        height: auto;
+    }
+    @media screen and (min-width:1280px) {
+        width: 375px;
+        height: auto;
+    }
+}
+
