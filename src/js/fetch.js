@@ -38,3 +38,19 @@ export function fetchSMovieTrailer(id) {
     },
   });
 }
+
+fetchTrendingFilms().then(res => {
+  console.log(res);
+});
+
+fetchSearchFilms('robocop').then(res => {
+  console.log(res);
+});
+
+fetchByMovieId('112').then(res => {
+  console.log(res);
+});
+
+fetchSMovieTrailer('13').then(res => {
+  console.log(res);
+});
