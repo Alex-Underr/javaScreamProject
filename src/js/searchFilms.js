@@ -29,4 +29,7 @@ const searchFilmData = async event => {
   }
 };
 
-refs.searchBtn.addEventListener('submit', searchFilmData);
+if (refs.gallery) {
+  refs.searchBtn.addEventListener('submit', searchFilmData);
+  return;
+}
