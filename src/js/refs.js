@@ -5,8 +5,9 @@ export const refs = {
   galleryLib: document.querySelector('.js-movie-gallery-library'),
   searchBtn: document.querySelector('.search__form'),
   errorString: document.querySelector('.p__header'),
-  // footer
   footer: document.querySelector('footer'),
-  // pagination
   container: document.getElementById('pagination'),
+  backdropEl: document.querySelector('.backdrop'),
+  filmCardEl: document.querySelector('.modal__container'),
+  closeBtnEl: document.querySelector('.modal-btn-close')
 };

@@ -1,20 +1,18 @@
-import {createElementOfModal} from './markup-modal';
+import {createElementOfModal} from '../markup/markup-modal';
 import {fetchByMovieId} from './fetch';
+import { refs } from './refs';
 
-const refs = {
-    backdropEl: document.querySelector('.backdrop'),
-    filmCardEl: document.querySelector('.modal__container'),
-    galleryListEl:document.querySelector('.js-movie-gallery'),
-    closeBtnEl: document.querySelector('.modal-btn-close')
-};
-if (!refs.galleryListEl){
-  return 
-  document.removeEventListener('click', handleOpenModal);
-}else{refs.galleryListEl.addEventListener('click', handleOpenModal);
 refs.backdropEl.addEventListener('click', closeModal);
-refs.closeBtnEl.addEventListener('click', closeModal);}
+refs.closeBtnEl.addEventListener('click', closeModal);
 
 
+if(!refs.gallery){
+  document.removeEventListener('click', handleOpenModal);
+  refs.galleryLib.addEventListener('click', handleOpenModal);
+}else {
+  document.removeEventListener('click', handleOpenModal);
+  refs.gallery.addEventListener('click', handleOpenModal);
+}
 
 async function handleOpenModal(event){
     if(!event.target.parentNode.classList.contains('movie__item') &&!event.target.parentNode.classList.contains('movie__details')){

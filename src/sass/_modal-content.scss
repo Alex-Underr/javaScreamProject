@@ -32,6 +32,7 @@
     font-size: 12px;
     line-height: 1.3;
     color: #8c8c8c;
+    width: 69px;
   }
 
   &__text {
@@ -54,44 +55,40 @@
   }
 }
 
-.btn {
-  font-family: 'Roboto', sans-serif;
+.btn{
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 1.33;
   text-align: center;
-  color: #ffffff;
-  text-transform: uppercase;
-
-  border: 1px solid #ffffff;
+  color: #000000;
+  text-transform:uppercase;
+  border: 1px solid #000000;
   border-radius: 5px;
   background-color: transparent;
   height: 44px;
   min-width: 110px;
-
-  &:hover,
-  &:focus {
-    border: none;
-    background-color: #ff6b01;
+      &:hover,
+      &:focus{
+          border: none;
+          color: #FFFFFF;
+          background-color: #FF6B01;
+      }
+      @media screen and (min-width:768px) {
+          min-width: 125px;
+      }
+      @media screen and (min-width:1280px) {
+          min-width: 136px;
+          margin-left: 8px;
+      }
+      &__wrapper{
+      display: flex;
+      gap: 20px;
+      @media screen and (min-width:768px) {
+          gap: 15px;
+      }
   }
-
-  @media screen and (min-width: 768px) {
-    min-width: 125px;
   }
-
-  @media screen and (min-width: 1280px) {
-    min-width: 136px;
-    margin-left: 8px;
-  }
-
-  &__wrapper {
-    display: flex;
-    gap: 20px;
-    @media screen and (min-width: 768px) {
-      gap: 15px;
-    }
-  }
-}
 
 .description {
   &__headline {
