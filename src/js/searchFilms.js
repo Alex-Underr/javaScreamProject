@@ -1,7 +1,6 @@
 import { fetchSearchFilms } from './fetch';
-const searchBtn = document.querySelector('.search__form');
-const mainContainer = document.querySelector('.js-main-container');
-const errorString = document.querySelector('.p__header');
+import { createMarkupCards } from '../markup/markup';
+import { refs } from './refs';
 
 let page = 1;
 let query = null;
@@ -13,24 +12,21 @@ const searchFilmData = async event => {
   try {
     const { data } = await fetchSearchFilms(query, page);
     if (!data.results.length) {
-      mainContainer.innerHTML = '';
-      errorString.classList.remove('p__hidden');
+      refs.gallery.innerHTML = '';
+      refs.errorString.classList.remove('p__hidden');
       console.log(
         'Sorry, there are no films matching your search query. Please try again.'
       );
       return;
     }
 
-    errorString.classList.add('p__hidden');
+    refs.errorString.classList.add('p__hidden');
+    console.log(data);
     console.log(`Hooray! We found ${data.results.length} films!`);
-    mainContainer.innerHTML = '';
-
-    // if (data.hits.length === 40) {
-    //   loadMoreBtn.classList.remove('is-hidden');
-    // }
+    refs.gallery.innerHTML = createMarkupCards(data.results);
   } catch (err) {
     console.log(err);
   }
 };
 
-searchBtn.addEventListener('submit', searchFilmData);
+refs.searchBtn.addEventListener('submit', searchFilmData);
