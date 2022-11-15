@@ -1,4 +1,7 @@
+import './js/refs';
 import './js/fetch';
 import './js/modal';
-import './js/markup';
 import './js/searchFilms.js';
+import './markup/markup';
+import './js/loading';
+

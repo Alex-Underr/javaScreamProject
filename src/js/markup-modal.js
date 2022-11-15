@@ -1,8 +1,8 @@
-export function createElementOfModal({genres, vote_count, original_title, popularity, vote_average, title,  overview, poster_path}){
+export function createElementOfModal({genres, vote_count, original_title, popularity, vote_average, title,  overview, poster_path, id}){
     const genresList = genres.map(el=> el.name).join(', ')
-    const popularRating = popularity.toFixed(2);
+    const popularRating = popularity.toFixed(1);
     const fixedVoteAverage = vote_average.toFixed(2);
-           return `     <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"  class="image__modal">
+           return `     <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"  class="image__modal"  data-id="${id}">
            <div class="modal__content">  
                <h2 class="modal__title js__modal__title">${title}</h2> 
                <div class="modal__wrapper">
