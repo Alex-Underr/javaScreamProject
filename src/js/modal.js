@@ -7,10 +7,13 @@ const refs = {
     galleryListEl:document.querySelector('.js-movie-gallery'),
     closeBtnEl: document.querySelector('.modal-btn-close')
 };
-
-refs.galleryListEl.addEventListener('click', handleOpenModal);
+if (!refs.galleryListEl){
+  return 
+  document.removeEventListener('click', handleOpenModal);
+}else{refs.galleryListEl.addEventListener('click', handleOpenModal);
 refs.backdropEl.addEventListener('click', closeModal);
-refs.closeBtnEl.addEventListener('click', closeModal);
+refs.closeBtnEl.addEventListener('click', closeModal);}
+
 
 
 async function handleOpenModal(event){
