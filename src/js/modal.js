@@ -19,7 +19,8 @@ async function handleOpenModal(event){
     }
     refs.backdropEl.classList.remove('is-hidden');
     document.addEventListener('keydown', onEscBtnPush);
-    try{ const {data} = await fetchByMovieId(112);
+    try{ const idOfCard = event.target.parentNode.dataset.id;
+      const {data} = await fetchByMovieId(idOfCard);
       const createModal = await createElementOfModal(data);
       refs.filmCardEl.innerHTML = createModal
     }
