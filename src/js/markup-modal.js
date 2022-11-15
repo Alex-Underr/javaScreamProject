@@ -1,7 +1,7 @@
 export function createElementOfModal({genres, vote_count, original_title, popularity, vote_average, title,  overview, poster_path, id}){
     const genresList = genres.map(el=> el.name).join(', ')
     const popularRating = popularity.toFixed(1);
-    const fixedVoteAverage = vote_average.toFixed(2);
+    const fixedVoteAverage = vote_average.toFixed(1);
            return `     <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"  class="image__modal"  data-id="${id}">
            <div class="modal__content">  
                <h2 class="modal__title js__modal__title">${title}</h2> 
@@ -13,7 +13,7 @@ export function createElementOfModal({genres, vote_count, original_title, popula
                        <li class="film__item js__film__item">Genre</li>
                    </ul>
                    <ul class="film__list js__film__list">
-                       <li class=" film__text js__film__text"><span class="text__rating">${fixedVoteAverage}</span> / ${vote_count}</li>
+                       <li class=" film__text js__film__text"><span class="text__rating"> ${fixedVoteAverage} </span> / ${vote_count}</li>
                        <li class="film__text js__film__text">${popularRating}</li>
                        <li class="film__text js__film__text">${original_title}</li>
                        <li class="film__text js__film__text">${genresList}</li>
