@@ -101,6 +101,7 @@
   font-size: 14px;
   line-height: 1.16px;
 
+  color: #ffffff;
   background-color: transparent;
   border-bottom: 0.5px solid #ffffff;
 }
@@ -151,4 +152,55 @@
   display: flex;
   justify-content: center;
   gap: 16px;
+}
+
+.header__bg--library {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 230px;
+
+  // Mobile screen
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../image/header-bgLib-320.jpg);
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../image/header-bgLib-320@2x.jpg);
+  }
+
+  // Tablet screen
+  @media screen and (min-width: 768px) {
+    min-height: 216px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../image/header-bgLib-768.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../image/header-bgLib-768@2x.jpg);
+    }
+  }
+
+  // Desktop screen
+  @media screen and (min-width: 1280px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../image/header-bgLib-1280.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../image/header-bgLib-1280@2x.jpg);
+    }
+  }
 }
