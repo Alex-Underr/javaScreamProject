@@ -1,3 +1,5 @@
+import './js/refs';
 import './js/fetch';
 import './js/modal';
-import './js/markup';
+import './markup/markup';
+import './js/loading';
