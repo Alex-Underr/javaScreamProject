@@ -1,4 +1,6 @@
 import './js/modal';
+import './js/markup';
+
 import { fetchTrendingFilms } from '../src/js/fetch';
 import { fetchSearchFilms } from '../src/js/fetch';
 import { fetchByMovieId } from '../src/js/fetch';
