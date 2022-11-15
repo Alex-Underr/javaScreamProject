@@ -22,8 +22,8 @@ export function createElementOfModal({genres, vote_count, original_title, popula
            <p class="description__headline js__description__headline">About</p>
            <p class="description__text js__description text">${overview}</p></div>
                <div class="btn__wrapper"> 
-                   <button class="btn btn__watched js__btn__watched" type="button">add to Watched</button>
-                   <button class="btn btn__queue js__btn__queue" type="button">add to queue</button>
+                   <button class="btn btn__watched js__btn__watched" type="button" data-id="${id}>add to Watched</button>
+                   <button class="btn btn__queue js__btn__queue" type="button data-id="${id}">add to queue</button>
                </div>
           
             </div>`
