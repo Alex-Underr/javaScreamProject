@@ -1,4 +1,7 @@
-refs ={
+import {createElementOfModal} from './markup-modal';
+import {fetchByMovieId} from './fetch';
+
+const refs = {
     backdropEl: document.querySelector('.backdrop'),
     filmCardEl: document.querySelector('.modal__container'),
     galleryListEl:document.querySelector('.js-movie-gallery'),
@@ -10,12 +13,21 @@ refs.backdropEl.addEventListener('click', closeModal);
 refs.closeBtnEl.addEventListener('click', closeModal);
 
 
-function handleOpenModal(event){
+async function handleOpenModal(event){
     if(!event.target.parentNode.classList.contains('movie__item') &&!event.target.parentNode.classList.contains('movie__details')){
        return
     }
     refs.backdropEl.classList.remove('is-hidden');
     document.addEventListener('keydown', onEscBtnPush);
+    try{ const {data} = await fetchByMovieId(112);
+      const createModal = await createElementOfModal(data);
+      refs.filmCardEl.innerHTML = createModal
+    }
+   catch (err){
+    console.log(err);
+   }
+
+    
 }
 
 function onEscBtnPush (event){
@@ -24,6 +36,7 @@ function onEscBtnPush (event){
       }
       refs.backdropEl.classList.add('is-hidden');
       document.removeEventListener('keydown', onEscBtnPush);
+      refs.filmCardEl.innerHTML ='';
 }
 
 function closeModal(event){
@@ -35,4 +48,6 @@ function closeModal(event){
       } 
       refs.backdropEl.classList.add('is-hidden');
       document.removeEventListener('keydown', onEscBtnPush);
+      refs.filmCardEl.innerHTML ='';
+
 }
