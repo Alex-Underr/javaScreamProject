@@ -34,13 +34,10 @@
 
     &__text{
         font-family: 'Roboto', sans-serif;
-        font-style: normal;
         font-weight: 500;
         font-size: 12px;
         line-height: 1.33;
         color: #000000;
-        text-transform: uppercase;
-        // margin:0 auto;
         }
 
     &__item{
@@ -52,7 +49,6 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
-       
     }
     
 }
@@ -110,7 +106,9 @@ min-width: 110px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    margin-bottom: 8px;}
+    margin-bottom: 8px;
+
+    }
 
     &_text{
  font-family: 'Roboto', sans-serif;
@@ -141,3 +139,18 @@ color: #000000;
     }
 }
 
+.modal__wrapper{
+    display: flex;
+    gap: 40px;
+    
+    @media screen and (min-width:1280px) {
+        gap: 83px;
+    }
+}
+ 
+
+.text__list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
