@@ -1,7 +1,9 @@
 import {createElementOfModal} from '../markup/markup-modal';
-import {fetchByMovieId} from './fetch';
+import {fetchByMovieId, fetchSMovieTrailer } from './fetch';
 import { refs } from './refs';
-import * as lsModule from './local-storage'
+import * as lsModule from './local-storage';
+import * as basicLightbox from 'basiclightbox'
+
 
 refs.backdropEl.addEventListener('click', closeModal);
 
@@ -26,9 +28,18 @@ async function handleOpenModal(event){
       
       const watchedBtnEl = document.querySelector('.js__btn__watched');
       const ququedBtnEl = document.querySelector('.js__btn__queue');
-
-      watchedBtnEl.addEventListener('click', handleAddInWatchedList, {once: true});
-      ququedBtnEl.addEventListener('click', handleAddInQueue, {once: true})
+      const btnWrapper = document.querySelector('.btn__wrapper');
+      const filmCardEl = document.querySelector('.btn__trailer');
+      filmCardEl.addEventListener('click', onPlayTrailer);
+      if (location.href.indexOf('library')!== -1){
+        btnWrapper.style.cssText = 'display: none'
+        return
+      }
+      
+     
+        
+        watchedBtnEl.addEventListener('click', handleAddInWatchedList, {once: true});
+        ququedBtnEl.addEventListener('click', handleAddInQueue, {once: true})
     }
    catch (err){
     console.log(err);
@@ -54,4 +65,18 @@ function closeModal({target, code}){
       refs.backdropEl.classList.add('is-hidden');
       refs.backdropEl.innerHTML ='';
 
+}
+async function onPlayTrailer(event) {
+  if (!event.target.classList.contains('btn__trailer')) return;
+  try {
+    const id = event.target.dataset.id;
+    const filmLink = await fetchSMovieTrailer(id);
+    console.log(filmLink.data.results[0].key);
+    const instance = basicLightbox.create(`
+    <iframe src="https://www.youtube.com/embed/${filmLink.data.results[0].key}" width="560" height="315" frameborder="0"></iframe>
+`);
+    instance.show();
+  } catch (error) {
+    console.log(error);
+  }
 }
