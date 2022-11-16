@@ -12,7 +12,14 @@ export function createElementOfModal({
   const genresList = genres.map(el => el.name).join(', ');
   const popularRating = popularity.toFixed(1);
   const fixedVoteAverage = vote_average.toFixed(1);
-  return `     <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"  class="image__modal"  data-id="${id}">
+  return `    <div class="modal">
+  <button class="modal-btn-close" data-modal-close type="button">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="modal-btn-close">
+          <path d="M8 8L22 22" stroke="black" stroke-width="2"/>
+          <path d="M8 22L22 8" stroke="black" stroke-width="2"/>
+      </svg>                
+  </button>
+  <div class="modal__container">  <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"  class="image__modal"  data-id="${id}">
            <div class="modal__content">  
                <h2 class="modal__title js__modal__title">${title}</h2> 
                <div class="modal__wrapper">
@@ -35,6 +42,7 @@ export function createElementOfModal({
                    <button class="btn btn__watched js__btn__watched" type="button" data-id="${id}">add to Watched</button>
                    <button class="btn btn__queue js__btn__queue" type="button" data-id="${id}">add to queue</button>
                </div>
-          
+               </div> 
+               </div>
             </div>`;
 }
