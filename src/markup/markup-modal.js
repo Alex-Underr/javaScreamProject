@@ -1,8 +1,18 @@
-export function createElementOfModal({genres, vote_count, original_title, popularity, vote_average, title,  overview, poster_path, id}){
-    const genresList = genres.map(el=> el.name).join(', ')
-    const popularRating = popularity.toFixed(1);
-    const fixedVoteAverage = vote_average.toFixed(1);
-           return `     <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"  class="image__modal"  data-id="${id}">
+export function createElementOfModal({
+  genres,
+  vote_count,
+  original_title,
+  popularity,
+  vote_average,
+  title,
+  overview,
+  poster_path,
+  id,
+}) {
+  const genresList = genres.map(el => el.name).join(', ');
+  const popularRating = popularity.toFixed(1);
+  const fixedVoteAverage = vote_average.toFixed(1);
+  return `     <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"  class="image__modal"  data-id="${id}">
            <div class="modal__content">  
                <h2 class="modal__title js__modal__title">${title}</h2> 
                <div class="modal__wrapper">
@@ -22,11 +32,9 @@ export function createElementOfModal({genres, vote_count, original_title, popula
            <p class="description__headline js__description__headline">About</p>
            <p class="description__text js__description text">${overview}</p></div>
                <div class="btn__wrapper"> 
-                   <button class="btn btn__watched js__btn__watched" type="button" data-id="${id}>add to Watched</button>
-                   <button class="btn btn__queue js__btn__queue" type="button data-id="${id}">add to queue</button>
+                   <button class="btn btn__watched js__btn__watched" type="button" data-id="${id}">add to Watched</button>
+                   <button class="btn btn__queue js__btn__queue" type="button" data-id="${id}">add to queue</button>
                </div>
           
-            </div>`
-       }
-      
-   
+            </div>`;
+}
