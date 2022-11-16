@@ -11,4 +11,6 @@ export const refs = {
   filmCardEl: document.querySelector('.modal__container'),
   closeBtnEl: document.querySelector('.modal-btn-close'),
   watchedBtnEl: document.querySelector('.js__btn__watched'),
+  scrollButton: document.querySelector('.scroll-js'),
+  rocketTail: document.querySelector('.rocket-tail'),
 };
