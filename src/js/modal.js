@@ -3,7 +3,7 @@ import {fetchByMovieId} from './fetch';
 import { refs } from './refs';
 
 refs.backdropEl.addEventListener('click', closeModal);
-refs.closeBtnEl.addEventListener('click', closeModal);
+// refs.closeBtnEl.addEventListener('click', closeModal);
 
 
 if(!refs.gallery){
@@ -19,11 +19,11 @@ async function handleOpenModal(event){
        return
     }
     refs.backdropEl.classList.remove('is-hidden');
-    document.addEventListener('keydown', onEscBtnPush);
+    document.addEventListener('keydown', closeModal, {once: true});
     try{ const idOfCard = event.target.parentNode.dataset.id;
       const {data} = await fetchByMovieId(idOfCard);
       const createModal = await createElementOfModal(data);
-      refs.filmCardEl.innerHTML = createModal
+      refs.backdropEl.innerHTML = createModal
     }
    catch (err){
     console.log(err);
@@ -32,24 +32,23 @@ async function handleOpenModal(event){
     
 }
 
-function onEscBtnPush (event){
-    if (event.code !== 'Escape') {
-        return;
-      }
-      refs.backdropEl.classList.add('is-hidden');
-      document.removeEventListener('keydown', onEscBtnPush);
-      refs.filmCardEl.innerHTML ='';
-}
+// function onEscBtnPush (event){
+//     if (event.code !== 'Escape') {
+//         return;
+//       }
+//       refs.backdropEl.classList.add('is-hidden');
+//       document.removeEventListener('keydown', onEscBtnPush);
+//       refs.filmCardEl.innerHTML ='';
+// }
 
-function closeModal(event){
+function closeModal({target, code}){
     if (
-        !event.target.classList.contains('backdrop') &&
-        !event.currentTarget.classList.contains('modal-btn-close')
+        !target.classList.contains('backdrop') &&
+        !target.classList.contains('modal-btn-close') && code !=='Escape'
       ) {
         return;
       } 
       refs.backdropEl.classList.add('is-hidden');
-      document.removeEventListener('keydown', onEscBtnPush);
-      refs.filmCardEl.innerHTML ='';
+      refs.backdropEl.innerHTML ='';
 
 }

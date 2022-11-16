@@ -117,16 +117,16 @@
 
 .image__modal {
   width: 240px;
-  height: auto;
+  height: 375px;
   border-radius: 5px;
-
+  object-fit: cover       ;
   @media screen and (min-width: 768px) {
     width: 264px;
-    height: auto;
-  }
+    
+  } 
   @media screen and (min-width: 1280px) {
     width: 375px;
-    height: auto;
+    height: 478px;
   }
 }
 
