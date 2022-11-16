@@ -50,8 +50,10 @@
   line-height: 1.16;
 
   color: #ffffff;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .logo__span {
@@ -118,6 +120,7 @@
 
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .nav__link--active::after {
@@ -152,6 +155,32 @@
   display: flex;
   justify-content: center;
   gap: 16px;
+}
+.btn__header {
+  font-family: ‘Roboto’, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: transparent;
+  height: 44px;
+  min-width: 110px;
+  &:hover,
+  &:focus {
+    border: none;
+    background-color: #ff6b01;
+  }
+  @media screen and (min-width: 768px) {
+    min-width: 125px;
+  }
+  @media screen and (min-width: 1280px) {
+    min-width: 136px;
+    margin-left: 8px;
+  }
 }
 
 .header__bg--library {
