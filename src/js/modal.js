@@ -3,8 +3,6 @@ import {fetchByMovieId} from './fetch';
 import { refs } from './refs';
 
 refs.backdropEl.addEventListener('click', closeModal);
-// refs.closeBtnEl.addEventListener('click', closeModal);
-
 
 if(!refs.gallery){
   document.removeEventListener('click', handleOpenModal);
@@ -23,23 +21,25 @@ async function handleOpenModal(event){
     try{ const idOfCard = event.target.parentNode.dataset.id;
       const {data} = await fetchByMovieId(idOfCard);
       const createModal = await createElementOfModal(data);
-      refs.backdropEl.innerHTML = createModal
+      refs.backdropEl.innerHTML = createModal;
+      const watchedBtnEl = document.querySelector('.js__btn__watched');
+      const ququedBtnEl = document.querySelector('.js__btn__queue');
+      watchedBtnEl.addEventListener('click', handleAddInWatchedList, {once: true});
+      ququedBtnEl.addEventListener('click', handleAddInQueue, {once: true})
     }
    catch (err){
     console.log(err);
    }
-
-    
+}
+function handleAddInWatchedList({target}) {
+  const watchedBtnId = target.dataset.id;
+  console.log(watchedBtnId);
 }
 
-// function onEscBtnPush (event){
-//     if (event.code !== 'Escape') {
-//         return;
-//       }
-//       refs.backdropEl.classList.add('is-hidden');
-//       document.removeEventListener('keydown', onEscBtnPush);
-//       refs.filmCardEl.innerHTML ='';
-// }
+function handleAddInQueue({target}) {
+  const ququedBtnId = target.dataset.id;
+  console.log(ququedBtnId);
+}
 
 function closeModal({target, code}){
     if (
