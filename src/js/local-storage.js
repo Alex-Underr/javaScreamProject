@@ -16,56 +16,8 @@ export const loadFromLocStorage = key => {
   }
 };
 
-let watchedLibrary = [];
+export let watchedLibrary = [];
 
-function addToWatchedLibrary(movieObj) {
-  return watchedLibrary.push(movieObj.id);
+export function addToWatchedLibrary(id) {
+  return watchedLibrary.push(id);
 }
-
-// //////////////////////// 👇 TEST //////////////////////////////////////
-
-const firstMovie = {
-  adult: false,
-  backdrop_path: '/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg',
-  id: 111111,
-  title: 'Black Panther: Wakanda Forever',
-  original_language: 'en',
-  original_title: 'Black Panther: Wakanda Forever',
-};
-
-const secondMovie = {
-  adult: false,
-  backdrop_path: '/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg',
-  id: 222222,
-  title: 'Black Panther: Wakanda Forever',
-  original_language: 'en',
-};
-
-const thirdMovie = {
-  adult: false,
-  backdrop_path: '/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg',
-  id: 333333,
-  title: 'Black Panther: Wakanda Forever',
-  original_language: 'en',
-};
-
-addToWatchedLibrary(firstMovie);
-addToWatchedLibrary(secondMovie);
-addToWatchedLibrary(thirdMovie);
-
-// console.log(watchedLibrary);
-
-saveToLocStorage('wached', watchedLibrary);
-
-const resFromLS = loadFromLocStorage('wached');
-// console.log(resFromLS);
-
-/// 👇 не працює, 😭 собака  !!!
-
-// if (refs.watchedBtnEl) {
-//   refs.watchedBtnEl.addEventListener('click', handleOfWatchedBtnClick);
-
-//   function handleOfWatchedBtnClick() {
-//     console.log('click');
-//   }
-// }
