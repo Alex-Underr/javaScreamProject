@@ -10,7 +10,8 @@ export const refs = {
   backdropEl: document.querySelector('.backdrop'),
   filmCardEl: document.querySelector('.modal__container'),
   closeBtnEl: document.querySelector('.modal-btn-close'),
-  watchedBtnEl: document.querySelector('.js__btn__watched'),
+  watchedBtnLib: document.querySelector('.js__btn--watched'),
+  quereBtnLib: document.querySelector('.js__btn--quere'),
   scrollButton: document.querySelector('.scroll-js'),
   rocketTail: document.querySelector('.rocket-tail'),
 };
