@@ -1,6 +1,7 @@
 import {createElementOfModal} from '../markup/markup-modal';
 import {fetchByMovieId} from './fetch';
 import { refs } from './refs';
+import * as lsModule from './local-storage'
 
 refs.backdropEl.addEventListener('click', closeModal);
 
@@ -22,8 +23,10 @@ async function handleOpenModal(event){
       const {data} = await fetchByMovieId(idOfCard);
       const createModal = await createElementOfModal(data);
       refs.backdropEl.innerHTML = createModal;
+      
       const watchedBtnEl = document.querySelector('.js__btn__watched');
       const ququedBtnEl = document.querySelector('.js__btn__queue');
+
       watchedBtnEl.addEventListener('click', handleAddInWatchedList, {once: true});
       ququedBtnEl.addEventListener('click', handleAddInQueue, {once: true})
     }
@@ -33,12 +36,12 @@ async function handleOpenModal(event){
 }
 function handleAddInWatchedList({target}) {
   const watchedBtnId = target.dataset.id;
-  console.log(watchedBtnId);
+  lsModule.addToWatchedLibrary(watchedBtnId);
 }
 
 function handleAddInQueue({target}) {
   const ququedBtnId = target.dataset.id;
-  console.log(ququedBtnId);
+  lsModule.addToQueueLibrary(ququedBtnId);
 }
 
 function closeModal({target, code}){

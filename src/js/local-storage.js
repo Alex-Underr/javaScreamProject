@@ -16,8 +16,26 @@ export const loadFromLocStorage = key => {
   }
 };
 
-export let watchedLibrary = [];
+let watchedLibrary
+if (localStorage.getItem('queue')) {
+  watchedLibrary = JSON.parse(localStorage.getItem('queue'))
+} else {
+  watchedLibrary = []
+}
 
 export function addToWatchedLibrary(id) {
-  return watchedLibrary.push(id);
+   watchedLibrary.push(id);
+  saveToLocStorage('watched', watchedLibrary)
+}
+
+let queueLibrary
+if (localStorage.getItem('queue')) {
+  queueLibrary = JSON.parse(localStorage.getItem('queue'))
+} else {
+  queueLibrary = []
+}
+
+export function addToQueueLibrary(id) {
+  queueLibrary.push(id);
+ saveToLocStorage('queue', queueLibrary)
 }
