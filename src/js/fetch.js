@@ -6,19 +6,21 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 const searchFilms = 'search/movie';
 const getTrendingFilms = 'trending/movie/day';
 
-export function fetchTrendingFilms() {
+export function fetchTrendingFilms(page) {
   return axios.get(`${getTrendingFilms}`, {
     params: {
       api_key: API_KEY,
+      page
     },
   });
 }
 
-export function fetchSearchFilms(query) {
+export function fetchSearchFilms(query,page) {
   return axios.get(`${searchFilms}`, {
     params: {
       api_key: API_KEY,
       query: query,
+      page
     },
   });
 }
@@ -39,18 +41,18 @@ export function fetchSMovieTrailer(id) {
   });
 }
 
-fetchTrendingFilms().then(res => {
-  console.log(res);
-});
+// fetchTrendingFilms().then(res => {
+//   console.log(res);
+// });
 
-fetchSearchFilms('robocop').then(res => {
-  console.log(res);
-});
+// fetchSearchFilms('robocop').then(res => {
+//   console.log(res);
+// });
 
-fetchByMovieId('112').then(res => {
-  console.log(res);
-});
+// fetchByMovieId('112').then(res => {
+//   console.log(res);
+// });
 
-fetchSMovieTrailer('13').then(res => {
-  console.log(res);
-});
+// fetchSMovieTrailer('13').then(res => {
+//   console.log(res);
+// });
