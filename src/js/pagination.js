@@ -1,21 +1,28 @@
-// // ES6
 import Pagination from 'tui-pagination';
+import debounce from 'lodash.debounce';
+import {
+    fetchTrendingFilms,
+    fetchSearchFilms,
+    fetchByMovieId,
+    fetchSMovieTrailer,
+} from './fetch';
 
-// // CommonJS
-// const Pagination = require('tui-pagination');
+import { createMarkupCards } from '../markup/markup'
+import { refs } from './refs';
 
-// // Browser
-// const Pagination = tui.Pagination;
 
+const search = document.querySelector('.search__form');
+const form = document.querySelector('.search__input');
+const DEBOUNCE_DELAY = 500;
 const PER_PAGE = 20
 
 const container = document.getElementById('pagination');
-const options = { // below default value of options
+const options = {
      totalItems: 10000,
      itemsPerPage: PER_PAGE,
      visiblePages: 5,
      page: 1,
-     centerAlign: false,
+     centerAlign: true,
      firstItemClassName: 'tui-first-child',
      lastItemClassName: 'tui-last-child',
      template: {
@@ -34,5 +41,66 @@ const options = { // below default value of options
                  '<span class="tui-ico-ellip">...</span>' +
              '</a>'
      }
-};
-const pagination = new Pagination(container, options);
+    };
+    
+export const pagination = new Pagination(container, options);
+  
+pagination.on('afterMove', async function (evt) {
+    try {
+        const {data:{results}}
+     = await fetchTrendingFilms(evt.page);
+        refs.gallery.innerHTML = createMarkupCards(results);
+        
+    }
+    catch (err) {
+        console.log(err, 'error here')
+    }
+    
+});
+
+// export const paginationSearch = new Pagination(container, options);
+// // paginationSearch.on('beforeMove', function () {
+// //   collectionEl.innerHTML = '';
+// // });
+// paginationSearch.on('afterMove', async function (evt) {
+//   const moviesByKeyWord = await fetchSearchFilms(inputValue, evt.page);
+
+//   refs.gallery.innerHTML = createMarkupCards(moviesByKeyWord);
+// });
+
+// let inputValue;
+
+// form.addEventListener('input', debounce(onFormInput, DEBOUNCE_DELAY));
+
+// export async function onFormInput(evt) {
+//   inputValue = evt.target.value;
+//   evt.preventDefault();
+//   if (evt.target.value === '') {
+//     return searchFilmData();
+//   }
+//     if (inputValue === ' ') {
+//       return;
+//   }
+
+//   gallery.textContent = '';
+
+//   paginationSearch.reset();
+//   let page = 1;
+//   const moviesByKeyWord = await fetchMoviesSearchQuery(inputValue, page);
+//   const loadGenres = await fetchGenres();
+//   if (moviesByKeyWord.total_results === 0) {
+//     failure();
+//   }
+//   if (moviesByKeyWord.total_results > 0) {
+//     success(moviesByKeyWord.total_results);
+//   }
+//   container.classList.remove('visually-hidden');
+
+//   renderMarkup(moviesByKeyWord, loadGenres);
+
+//   if (moviesByKeyWord.total_results < 20) {
+//     container.classList.add('visually-hidden');
+//   } else {
+//     container.classList.remove('visually-hidden');
+//   }
+// };
