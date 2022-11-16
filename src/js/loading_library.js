@@ -1,10 +1,38 @@
-import { fetchByMovieId } from './fetch';
+import { fetchByMovieId, fetchAllByMovieId } from './fetch';
 import { createMarkupCardsForLibrary } from '../markup/markup-library-card';
 import { refs } from './refs';
+import * as lsModule from './local-storage';
 
-// Для прикладу взято ID фільму "Poker Face" - 842934
-fetchByMovieId(842934)
-  .then(res => {
-    refs.galleryLib.innerHTML = createMarkupCardsForLibrary(res.data);
-  })
-  .catch(err => console.log('Catched error >>> ', err));
+function onWatchedBtnclick() {
+  refs.galleryLib.innerHTML = '';
+  const watchedLocStorage = lsModule.loadFromLocStorage('watched');
+  watchedLocStorage.forEach(element => {
+    fetchByMovieId(element)
+      .then(res => {
+        refs.galleryLib.insertAdjacentHTML(
+          'beforeend',
+          createMarkupCardsForLibrary(res.data)
+        );
+      })
+      .catch(err => console.log('Catched error >>> ', err));
+  });
+}
+
+function onQuereBtnclick() {
+  refs.galleryLib.innerHTML = '';
+  const quereLocStorage = lsModule.loadFromLocStorage('queue');
+  quereLocStorage.forEach(element => {
+    fetchByMovieId(element)
+      .then(res => {
+        refs.galleryLib.insertAdjacentHTML(
+          'beforeend',
+          createMarkupCardsForLibrary(res.data)
+        );
+      })
+      .catch(err => console.log('Catched error >>> ', err));
+  });
+}
+
+refs.watchedBtnLib.addEventListener('click', onWatchedBtnclick);
+
+refs.quereBtnLib.addEventListener('click', onQuereBtnclick);

@@ -10,17 +10,17 @@ export function fetchTrendingFilms(page) {
   return axios.get(`${getTrendingFilms}`, {
     params: {
       api_key: API_KEY,
-      page
+      page,
     },
   });
 }
 
-export function fetchSearchFilms(query,page) {
+export function fetchSearchFilms(query, page) {
   return axios.get(`${searchFilms}`, {
     params: {
       api_key: API_KEY,
       query: query,
-      page
+      page,
     },
   });
 }
