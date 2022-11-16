@@ -21,6 +21,9 @@ let watchedLibrary = localStorage.getItem('watched')
   : [];
 
 export function addToWatchedLibrary(id) {
+  if (watchedLibrary.includes(id)) {
+    return;
+  }
   watchedLibrary.push(id);
   saveToLocStorage('watched', watchedLibrary);
 }
@@ -30,6 +33,9 @@ let queueLibrary = localStorage.getItem('queue')
   : [];
 
 export function addToQueueLibrary(id) {
+  if (queueLibrary.includes(id)) {
+    return;
+  }
   queueLibrary.push(id);
   saveToLocStorage('queue', queueLibrary);
 }
