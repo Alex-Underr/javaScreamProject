@@ -9,5 +9,5 @@ export const refs = {
   container: document.getElementById('pagination'),
   backdropEl: document.querySelector('.backdrop'),
   filmCardEl: document.querySelector('.modal__container'),
-  closeBtnEl: document.querySelector('.modal-btn-close')
+  closeBtnEl: document.querySelector('.modal-btn-close'),
 };
