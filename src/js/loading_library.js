@@ -1,10 +1,10 @@
-import { fetchByMovieId, fetchAllByMovieId } from './fetch';
+import { fetchByMovieId } from './fetch';
 import { createMarkupCardsForLibrary } from '../markup/markup-library-card';
 import { refs } from './refs';
 import * as lsModule from './local-storage';
 
 function startPageLibrary() {
-  refs.galleryLib.innerHTML = '';
+  refs.gallery.innerHTML = '';
 
   let watchedLibrary = localStorage.getItem('watched')
     ? JSON.parse(localStorage.getItem('watched'))
@@ -23,7 +23,7 @@ function startPageLibrary() {
   libraryLocStorage.forEach(element => {
     fetchByMovieId(element)
       .then(res => {
-        refs.galleryLib.insertAdjacentHTML(
+        refs.gallery.insertAdjacentHTML(
           'beforeend',
           createMarkupCardsForLibrary(res.data)
         );
@@ -33,13 +33,13 @@ function startPageLibrary() {
 }
 
 function onWatchedBtnclick() {
-  refs.galleryLib.innerHTML = '';
+  refs.gallery.innerHTML = '';
   const watchedLocStorage = lsModule.loadFromLocStorage('watched');
   if (watchedLocStorage) {
     watchedLocStorage.forEach(element => {
       fetchByMovieId(element)
         .then(res => {
-          refs.galleryLib.insertAdjacentHTML(
+          refs.gallery.insertAdjacentHTML(
             'beforeend',
             createMarkupCardsForLibrary(res.data)
           );
@@ -52,13 +52,13 @@ function onWatchedBtnclick() {
 }
 
 function onQueueBtnclick() {
-  refs.galleryLib.innerHTML = '';
+  refs.gallery.innerHTML = '';
   const queueLocStorage = lsModule.loadFromLocStorage('queue');
   if (queueLocStorage) {
     queueLocStorage.forEach(element => {
       fetchByMovieId(element)
         .then(res => {
-          refs.galleryLib.insertAdjacentHTML(
+          refs.gallery.insertAdjacentHTML(
             'beforeend',
             createMarkupCardsForLibrary(res.data)
           );
