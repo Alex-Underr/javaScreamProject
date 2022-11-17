@@ -31,9 +31,8 @@
   }
   transition: transform 300ms, box-shadow 300ms, color 300ms;
   &:hover,
-  &:focus{
+  &:focus {
     transform: scale(1.01);
-
   }
 }
 
@@ -89,13 +88,16 @@
 
 .type {
   max-width: 480px;
-  font-size: 10px;
-  letter-spacing: 0.4;
+  font-size: 8px;
+  letter-spacing: 0.2;
+
+  @media screen and (min-width: 320px) {
+    font-size: 10px;
+  }
 
   @media screen and (min-width: 400px) {
-    max-width: 480px;
     font-size: 12px;
-    letter-spacing: 0.6;
+    letter-spacing: 0.5;
   }
 
   @media screen and (min-width: 768px) {

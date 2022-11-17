@@ -1,7 +1,11 @@
 import { fetchByMovieId } from './fetch';
 import { createMarkupCardsForLibrary } from '../markup/markup-library-card';
 import { refs } from './refs';
-import { typeWriterEffect } from './type-writer-effect';
+import {
+  typeWriterEffect,
+  typeWriterEffectWatched,
+  typeWriterEffectQueue,
+} from './type-writer-effect';
 import * as lsModule from './local-storage';
 
 function startPageLibrary() {
@@ -20,6 +24,7 @@ function startPageLibrary() {
   if (libraryLocStorage.length === 0) {
     refs.gallery.classList.add('hidden');
     refs.notifi.classList.remove('hidden');
+
     typeWriterEffect('library');
     return;
   }
@@ -40,6 +45,9 @@ function onWatchedBtnclick() {
   refs.gallery.innerHTML = '';
   const watchedLocStorage = lsModule.loadFromLocStorage('watched');
   if (watchedLocStorage) {
+    refs.gallery.classList.remove('hidden');
+    refs.notifi.classList.add('hidden');
+
     watchedLocStorage.forEach(element => {
       fetchByMovieId(element)
         .then(res => {
@@ -51,6 +59,10 @@ function onWatchedBtnclick() {
         .catch(err => console.log('Catched error >>> ', err));
     });
   } else {
+    refs.gallery.classList.add('hidden');
+    refs.notifi.classList.remove('hidden');
+
+    typeWriterEffectWatched('watched-list');
     console.log('You have not watched movies');
   }
 }
@@ -59,6 +71,9 @@ function onQueueBtnclick() {
   refs.gallery.innerHTML = '';
   const queueLocStorage = lsModule.loadFromLocStorage('queue');
   if (queueLocStorage) {
+    refs.gallery.classList.remove('hidden');
+    refs.notifi.classList.add('hidden');
+
     queueLocStorage.forEach(element => {
       fetchByMovieId(element)
         .then(res => {
@@ -70,9 +85,10 @@ function onQueueBtnclick() {
         .catch(err => console.log('Catched error >>> ', err));
     });
   } else {
-    // refs.gallery.classList.add('hidden');
-    // refs.notifi.classList.remove('hidden');
-    // typeWriterEffect('queue');
+    refs.gallery.classList.add('hidden');
+    refs.notifi.classList.remove('hidden');
+
+    typeWriterEffectQueue('queue-list');
     console.log('You have not movies in queue');
   }
 }
