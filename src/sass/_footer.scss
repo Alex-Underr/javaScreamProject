@@ -1,4 +1,19 @@
+///////////////////////fix footer to bottom
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+}
+
 .footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  ///////////////////////fix footer to bottom
   flex-grow: 0;
   margin-top: auto;
   font-size: 16px;
