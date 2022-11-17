@@ -82,8 +82,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100px;
+
   padding-top: 20px;
   padding-bottom: 40px;
+
+  @media screen and (min-height: 500px) {
+    height: 300px;
+  }
+
+  @media screen and (min-height: 900px) {
+    height: 500px;
+  }
 }
 
 .type {
