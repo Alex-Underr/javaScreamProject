@@ -7,3 +7,4 @@ import './js/pagination';
 import './js/local-storage';
 import './js/top-page';
 import './js/screen-theme';
+import './js/modal-team';
