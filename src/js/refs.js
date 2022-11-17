@@ -1,6 +1,7 @@
 export const refs = {
   mainContainer: document.querySelector('.js-main-container'),
   gallery: document.querySelector('.js-movie-gallery'),
+  notifi: document.querySelector('.js-notification'),
   searchBtn: document.querySelector('.search__form'),
   errorString: document.querySelector('.p__header'),
   footer: document.querySelector('footer'),

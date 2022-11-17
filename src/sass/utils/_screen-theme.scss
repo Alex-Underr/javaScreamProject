@@ -1,16 +1,25 @@
 :root {
   --bg-color: #ffffff;
+  --bg-color-footer: #f7f7f7;
   --text-color: #212121;
+  --text-color-footer: #212121;
 }
 
 [data-theme='dark'] {
-  --bg-color: rgb(25, 32, 39);
+  --bg-color: #192027;
+  --bg-color-footer: #202830;
   --text-color: #e0e0e0;
+  --text-color-footer: #e0e0e0;
 }
 
 body {
   color: var(--text-color);
   background-color: var(--bg-color);
+}
+
+.footer {
+  color: var(--text-color-footer);
+  background-color: var(--bg-color-footer);
 }
 
 .toggle-button {

@@ -5,7 +5,7 @@
     font-size: 20px;
     line-height: 1.15;
 
-    color: #000000;
+    color: #080808;
 
     @media screen and (min-width: 1280px) {
       font-size: 30px;
@@ -40,7 +40,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    color: #000000;
+    color: #080808;
   }
 
   &__item {
@@ -55,48 +55,48 @@
   }
 }
 
-.btn{
-  font-family: "Roboto", sans-serif;
+.btn {
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   text-align: center;
-  color: #000000;
-  text-transform:uppercase;
-  border: 1px solid #000000;
+  color: #080808;
+  text-transform: uppercase;
+  border: 1px solid #080808;
   border-radius: 5px;
   background-color: transparent;
   height: 44px;
   min-width: 110px;
   cursor: pointer;
-      &:hover,
-      &:focus{
-          border: none;
-          color: #FFFFFF;
-          background-color: #FF6B01;
-      }
-      @media screen and (min-width:768px) {
-          min-width: 125px;
-      }
-      @media screen and (min-width:1280px) {
-          min-width: 136px;
-          margin-left: 8px;
-      }
-      &__wrapper{
-      display: flex;
-      gap: 20px;
-      @media screen and (min-width:768px) {
-          gap: 15px;
-      }
+  &:hover,
+  &:focus {
+    border: none;
+    color: #ffffff;
+    background-color: #ff6b01;
   }
+  @media screen and (min-width: 768px) {
+    min-width: 125px;
   }
+  @media screen and (min-width: 1280px) {
+    min-width: 136px;
+    margin-left: 8px;
+  }
+  &__wrapper {
+    display: flex;
+    gap: 20px;
+    @media screen and (min-width: 768px) {
+      gap: 15px;
+    }
+  }
+}
 
 .description {
   &__headline {
     align-items: center;
     text-transform: uppercase;
 
-    color: #000000;
+    color: #080808;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -105,14 +105,14 @@
     margin-bottom: 8px;
   }
 
-  &_text {
+  &__text {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.66;
 
-    color: #000000;
+    color: #080808;
   }
 }
 
@@ -120,11 +120,10 @@
   width: 240px;
   height: 375px;
   border-radius: 5px;
-  object-fit: cover       ;
+  object-fit: cover;
   @media screen and (min-width: 768px) {
     width: 264px;
-    
-  } 
+  }
   @media screen and (min-width: 1280px) {
     width: 375px;
     height: 478px;
@@ -146,10 +145,9 @@
   gap: 8px;
 }
 
-.text__rating{
-    
-    color: #FFFFFF;
-    background-color: #FF6B01;
-    border-radius: 5px;
-    padding: 0 9px 0 10px;
+.text__rating {
+  color: #ffffff;
+  background-color: #ff6b01;
+  border-radius: 5px;
+  padding: 0 9px 0 10px;
 }
