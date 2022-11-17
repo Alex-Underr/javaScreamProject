@@ -4,6 +4,7 @@ import { refs } from './refs';
 import * as lsModule from './local-storage';
 import * as basicLightbox from 'basiclightbox';
 
+
 refs.backdropEl.addEventListener('click', closeModal);
 
 // if(!refs.gallery){
@@ -31,11 +32,14 @@ async function handleOpenModal(event) {
 
     const watchedBtnEl = document.querySelector('.js__btn__watched');
     const ququedBtnEl = document.querySelector('.js__btn__queue');
-    const btnWrapper = document.querySelector('.btn__wrapper');
     const filmCardEl = document.querySelector('.btn__trailer');
     filmCardEl.addEventListener('click', onPlayTrailer);
+
     if (location.href.indexOf('library') !== -1) {
-      btnWrapper.style.cssText = 'display: none';
+      watchedBtnEl.textContent = "Delete from watched list"
+      ququedBtnEl.textContent = "Delete from queue list";
+      watchedBtnEl.addEventListener('click', handleremoveFromWatched, {once: true});
+      ququedBtnEl.addEventListener('click', handleremoveFromQuuue, {once: true});
       return;
     }
 
@@ -57,6 +61,17 @@ function handleAddInQueue({ target }) {
   lsModule.addToQueueLibrary(ququedBtnId);
 }
 
+function handleremoveFromWatched ({target}){
+  const watchedBtnId = target.dataset.id;
+  lsModule.removeFromWatched(watchedBtnId);
+  
+}
+
+function handleremoveFromQuuue ({target}){
+  const ququedBtnId = target.dataset.id;
+  lsModule.removeFromQueue(ququedBtnId);
+}
+
 function closeModal({ target, code }) {
   if (
     !target.classList.contains('backdrop') &&
@@ -68,6 +83,7 @@ function closeModal({ target, code }) {
   refs.backdropEl.classList.add('is-hidden');
   refs.backdropEl.innerHTML = '';
 }
+
 async function onPlayTrailer(event) {
   if (!event.target.classList.contains('btn__trailer')) return;
   try {
