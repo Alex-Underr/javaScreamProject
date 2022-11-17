@@ -39,3 +39,23 @@ export function addToQueueLibrary(id) {
   queueLibrary.push(id);
   saveToLocStorage('queue', queueLibrary);
 }
+
+export function removeFromWatched (id){
+  const indexOfId = watchedLibrary.indexOf(id);
+  if (indexOfId === -1){
+    return; 
+  }
+  watchedLibrary.splice(indexOfId, 1);
+  saveToLocStorage('watched', watchedLibrary);
+  document.location.reload();
+}
+
+export function removeFromQueue (id){ 
+  const indexOfId = queueLibrary.indexOf(id);
+  if (indexOfId === -1){
+    return; 
+  }
+  queueLibrary.splice(indexOfId, 1);
+  saveToLocStorage('queue', queueLibrary);
+  document.location.reload();
+}
