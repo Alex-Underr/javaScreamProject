@@ -3,11 +3,11 @@
   margin-top: auto;
   font-size: 16px;
   line-height: 1.18;
-  color: rgba(84, 84, 84, 1);
+  // color: rgba(84, 84, 84, 1);
   padding: 34px 0;
   text-align: center;
   box-shadow: 0px 0px 1px 0px;
-  background-color: rgba(247, 247, 247, 1);
+  // background-color: rgba(247, 247, 247, 1);
 
   @media screen and (max-width: 767px) {
     font-size: 14px;
@@ -28,11 +28,11 @@
 .footer__link {
   cursor: pointer;
   text-decoration: underline;
-  color: rgba(84, 84, 84, 1);
+  // color: rgba(84, 84, 84, 1);
 }
 
 .footer__link:hover,
-.footer__link:focus{
+.footer__link:focus {
   color: #ff6b08;
 }
 

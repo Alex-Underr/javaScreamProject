@@ -1,6 +1,7 @@
 import { fetchByMovieId } from './fetch';
 import { createMarkupCardsForLibrary } from '../markup/markup-library-card';
 import { refs } from './refs';
+import { typeWriterEffect } from './type-writer-effect';
 import * as lsModule from './local-storage';
 
 function startPageLibrary() {
@@ -17,9 +18,12 @@ function startPageLibrary() {
   const libraryLocStorage = [...watchedLibrary, ...queueLibrary];
 
   if (libraryLocStorage.length === 0) {
-    console.log('You have not movies in your library');
+    refs.gallery.classList.add('hidden');
+    refs.notifi.classList.remove('hidden');
+    typeWriterEffect('library');
     return;
   }
+  refs.gallery.classList.remove('hidden');
   libraryLocStorage.forEach(element => {
     fetchByMovieId(element)
       .then(res => {
@@ -66,6 +70,9 @@ function onQueueBtnclick() {
         .catch(err => console.log('Catched error >>> ', err));
     });
   } else {
+    // refs.gallery.classList.add('hidden');
+    // refs.notifi.classList.remove('hidden');
+    // typeWriterEffect('queue');
     console.log('You have not movies in queue');
   }
 }

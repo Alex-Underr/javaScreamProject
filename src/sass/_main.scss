@@ -73,3 +73,35 @@
   color: #ffffff;
   background-color: #ff6b08;
 }
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.type {
+  max-width: 480px;
+  font-size: 10px;
+  letter-spacing: 0.4;
+
+  @media screen and (min-width: 400px) {
+    max-width: 480px;
+    font-size: 12px;
+    letter-spacing: 0.6;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+    font-size: 24px;
+  }
+}
+.orange--loror {
+  color: #ff6b08;
+}
