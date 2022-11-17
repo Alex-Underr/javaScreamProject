@@ -1,35 +1,56 @@
 <header>
-    <div class="header__bg container">
-        <div class="header__home">
-            <a href="./index.html" class="logo header__logo js__logo">
-                <svg class="logo__icon" width="24px" height="24px">
-                    <use href="./image/icon.svg#logo"></use>
-                </svg>
-                <span class="logo__span">Filmoteka</span>
-            </a>
+  <div class="header__bg container">
+    <div class="header__home">
+      <a href="./index.html" class="logo header__logo js__logo">
+        <svg class="logo__icon" width="24px" height="24px">
+          <use href="./image/icon.svg#logo"></use>
+        </svg>
+        <span class="logo__span">Filmoteka</span>
+      </a>
 
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="./index.html" aria-label="link for Home" class="nav__link nav__link--active">HOME</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="./library.html" aria-label="link for MY LIBRARY" class="nav__link">MY LIBRARY</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <form class="search__form" id="search-form">
-            <input class="search__input" type="text" name="searchMovie" autocomplete="off" placeholder="Movie search" />
-            <button class="search__btn js--btn__search" type="submit">
-                <svg class="menu__btn--icon" width="12" height="12">
-                    <use href="./image/icon.svg#search"></use>
-                </svg>
-            </button>
-        </form>
-        <p class="p__header p__hidden">
-            Search result not successful. Enter the correct movie name and
-        </p>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li>
+            <div class="container__ui">
+              <input type="checkbox" class="toggle-button" />
+            </div>
+          </li>
+          <li class="nav__item">
+            <a
+              href="./index.html"
+              aria-label="link for Home"
+              class="nav__link nav__link--active"
+              >HOME</a
+            >
+          </li>
+          <li class="nav__item">
+            <a
+              href="./library.html"
+              aria-label="link for MY LIBRARY"
+              class="nav__link"
+              >MY LIBRARY</a
+            >
+          </li>
+        </ul>
+      </nav>
     </div>
+
+    <form class="search__form" id="search-form">
+      <input
+        class="search__input"
+        type="text"
+        name="searchMovie"
+        autocomplete="off"
+        placeholder="Movie search"
+      />
+      <button class="search__btn js--btn__search" type="submit">
+        <svg class="menu__btn--icon" width="12" height="12">
+          <use href="./image/icon.svg#search"></use>
+        </svg>
+      </button>
+    </form>
+    <p class="p__header p__hidden">
+      Search result not successful. Enter the correct movie name and
+    </p>
+  </div>
 </header>

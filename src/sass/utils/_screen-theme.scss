@@ -1,0 +1,47 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #212121;
+}
+
+[data-theme='dark'] {
+  --bg-color: rgb(25, 32, 39);
+  --text-color: #e0e0e0;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.toggle-button {
+  -webkit-appearance: none;
+  outline: none;
+  width: 28px;
+  height: 16px;
+  background-color: #b81111;
+  border-radius: 15px;
+  position: relative;
+  transition: 0.4s;
+}
+
+.toggle-button:before {
+  content: '';
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  top: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  transition: 0.4s;
+}
+
+.toggle-button:checked {
+  background-color: #ffffff;
+}
+
+.toggle-button:checked:before {
+  transform: translate(75%);
+  background-color: #b81111;
+  transition: 0.4s;
+}
