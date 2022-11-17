@@ -6,3 +6,4 @@ import './js/loading';
 import './js/pagination';
 import './js/local-storage';
 import './js/top-page';
+import './js/screen-theme';
