@@ -44,7 +44,7 @@ function startPageLibrary() {
 function onWatchedBtnclick() {
   refs.gallery.innerHTML = '';
   const watchedLocStorage = lsModule.loadFromLocStorage('watched');
-  if (watchedLocStorage) {
+  if (watchedLocStorage.length !== 0) {
     refs.gallery.classList.remove('hidden');
     refs.notifi.classList.add('hidden');
 
@@ -70,7 +70,7 @@ function onWatchedBtnclick() {
 function onQueueBtnclick() {
   refs.gallery.innerHTML = '';
   const queueLocStorage = lsModule.loadFromLocStorage('queue');
-  if (queueLocStorage) {
+  if (queueLocStorage.length !== 0) {
     refs.gallery.classList.remove('hidden');
     refs.notifi.classList.add('hidden');
 
