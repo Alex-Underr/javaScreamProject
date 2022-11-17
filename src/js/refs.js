@@ -13,4 +13,7 @@ export const refs = {
   quereBtnLib: document.querySelector('.js__btn--quere'),
   scrollButton: document.querySelector('.scroll-js'),
   rocketTail: document.querySelector('.rocket-tail'),
+  openModalBtn: document.querySelector('[data-team-open]'),
+  closeModalBtn: document.querySelector('[data-team-close]'),
+  backdrop: document.querySelector('.backdrop-team'),
 };
