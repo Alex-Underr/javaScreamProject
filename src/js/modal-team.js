@@ -1,27 +1,32 @@
 import { refs } from './refs';
 
 refs.openModalBtn.addEventListener('click', onOpenModal)
-refs.closeModalBtn.addEventListener('click', onCloseModal);
+// refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onCloseModal);
-window.addEventListener('keydown', onEsc);
+// document.addEventListener('keydown', onEsc);
 
 
 function onOpenModal() {
   refs.backdrop.classList.remove('is-hidden');
-  window.addEventListener('keydown', onEsc)
+  document.addEventListener('keydown', onCloseModal, {once: true})
 }
 
-function onCloseModal(){
-  refs.backdrop.classList.add('is-hidden');
-  window.removeEventListener('keydown', onEsc);
-
-}
-
-function onEsc(event) {
-  if (event.code === 'Escape') {
-    onCloseModal();
+function onCloseModal({target, code}) {
+  if (!target.classList.contains('backdrop-team') && 
+  !target.classList.contains('js-close') && code !== 'Escape') {
+    return;
   }
+  refs.backdrop.classList.add('is-hidden');
+  // window.removeEventListener('keydown', onEsc);
+
 }
+
+// function onEsc(event) {
+//   if (event.code !== 'Escape') {
+//     return
+//   }
+//   onCloseModal();
+// }
 
 // function onBackdropClick(event) {
 //   if (event.currentTarget === event.target) {
