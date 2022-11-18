@@ -26,7 +26,7 @@ const searchFilmData = async event => {
     Notiflix.Loading.pulse();
     console.log(`Hooray! We found ${data.results.length} films!`);
     refs.gallery.innerHTML = createMarkupCards(data.results);
-    Notiflix.Loading.remove();
+    Notiflix.Loading.remove(250);
   } catch (err) {
     console.log(err);
   }
