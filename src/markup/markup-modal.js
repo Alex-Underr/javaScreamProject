@@ -41,7 +41,7 @@ export function createElementOfModal({
                <div class="btn__wrapper"> 
                    <button class="btn btn__watched js__btn__watched" type="button" data-id="${id}">add to Watched</button>
                    <button class="btn btn__queue js__btn__queue" type="button" data-id="${id}">add to queue</button>
-                      <button class="btn__trailer btn" type="button" data-id="${id}">Watch trailer</button>
+                    <button class="btn__trailer btn" type="button" data-id="${id}">Watch trailer</button>
                </div>
           
                </div> 

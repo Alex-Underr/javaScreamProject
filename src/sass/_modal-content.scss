@@ -56,6 +56,8 @@
 }
 
 .btn {
+  width: 110px;
+  padding: 0 10px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
@@ -71,15 +73,16 @@
   cursor: pointer;
   &:hover,
   &:focus {
-    border: none;
+    border: 1px #ff6b01 solid;
     color: #ffffff;
     background-color: #ff6b01;
   }
   @media screen and (min-width: 768px) {
-    min-width: 125px;
+    width: 125px;
+    padding: 0 9px;
   }
   @media screen and (min-width: 1280px) {
-    min-width: 136px;
+   width: 136px;
   }
   &__wrapper {
     display: flex;
@@ -155,4 +158,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  @media screen and (min-width: 1280px) {
+   flex-wrap: nowrap;
+  }
 }
