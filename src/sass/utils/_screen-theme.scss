@@ -1,8 +1,11 @@
 :root {
   --bg-color: #ffffff;
   --bg-color-footer: #f7f7f7;
+  --bg-color-modal: #ffffff;
   --text-color: #212121;
   --text-color-footer: #212121;
+  --text-color-modal-prim: #080808;
+  --text-color-modal-sec: #8c8c8c;
 }
 
 [data-theme='dark'] {
@@ -10,7 +13,12 @@
   --bg-color-footer: #202830;
   --text-color: #e0e0e0;
   --text-color-footer: #e0e0e0;
+  --bg-color-modal: #192027;
+  --text-color-modal-prim: #e0e0e0;
+  --text-color-modal-sec: #a7a7a7;
 }
+
+//////////////// body&footer colorize
 
 body {
   color: var(--text-color);
@@ -21,6 +29,33 @@ body {
   color: var(--text-color-footer);
   background-color: var(--bg-color-footer);
 }
+
+//////////////// modal colorize
+
+.modal,
+.btn,
+.description {
+  color: var(--text-color-modal-prim);
+  background-color: var(--bg-color-modal);
+}
+.btn {
+  border: 1px solid var(--text-color-modal-prim);
+}
+.modal-btn-close {
+  path {
+    stroke: var(--text-color-modal-prim);
+  }
+}
+.film {
+  &__item {
+    color: var(--text-color-modal-sec);
+  }
+  &__text {
+    color: var(--text-color-modal-prim);
+  }
+}
+
+//////////////// toggle-button settings
 
 .toggle-button {
   -webkit-appearance: none;
