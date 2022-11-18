@@ -10,7 +10,7 @@
 
 [data-theme='dark'] {
   --bg-color: #192027;
-  --bg-color-footer: #202830;
+  --bg-color-footer: #323b44;
   --text-color: #e0e0e0;
   --text-color-footer: #e0e0e0;
   --bg-color-modal: #192027;
@@ -55,6 +55,15 @@ body {
   }
 }
 
+//////////////// modal-team colorize
+
+.modal-team {
+  background-color: var(--bg-color-modal);
+}
+
+.git-icon-wrapper{
+  background-color: var(--bg-color-footer);
+}
 //////////////// toggle-button settings
 
 .toggle-button {
