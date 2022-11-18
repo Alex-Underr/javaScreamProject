@@ -1,61 +1,62 @@
 import Pagination from 'tui-pagination';
 import debounce from 'lodash.debounce';
 import {
-    fetchTrendingFilms,
-    fetchSearchFilms,
-    fetchByMovieId,
-    fetchSMovieTrailer,
+  fetchTrendingFilms,
+  fetchSearchFilms,
+  fetchByMovieId,
+  fetchSMovieTrailer,
 } from './fetch';
 
-import { createMarkupCards } from '../markup/markup'
+import { createMarkupCards } from '../markup/markup';
 import { refs } from './refs';
-
+import Notiflix from 'notiflix';
 
 const search = document.querySelector('.search__form');
 const form = document.querySelector('.search__input');
 const DEBOUNCE_DELAY = 500;
-const PER_PAGE = 20
+const PER_PAGE = 20;
 
 const container = document.getElementById('pagination');
 const options = {
-     totalItems: 10000,
-     itemsPerPage: PER_PAGE,
-     visiblePages: 5,
-     page: 1,
-     centerAlign: true,
-     firstItemClassName: 'tui-first-child',
-     lastItemClassName: 'tui-last-child',
-     template: {
-         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-         currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-         moveButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}">' +
-                 '<span class="tui-ico-{{type}}">{{type}}</span>' +
-             '</a>',
-         disabledMoveButton:
-             '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-                 '<span class="tui-ico-{{type}}">{{type}}</span>' +
-             '</span>',
-         moreButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-                 '<span class="tui-ico-ellip">...</span>' +
-             '</a>'
-     }
-    };
-    
+  totalItems: 10000,
+  itemsPerPage: PER_PAGE,
+  visiblePages: 5,
+  page: 1,
+  centerAlign: true,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
+};
+
 export const pagination = new Pagination(container, options);
-  
+
 pagination.on('afterMove', async function (evt) {
-    try {
-        const {data:{results}}
-     = await fetchTrendingFilms(evt.page);
-        refs.gallery.innerHTML = createMarkupCards(results);
-        
-    }
-    catch (err) {
-        console.log(err, 'error here')
-    }
-    
+  try {
+    Notiflix.Loading.pulse();
+    const {
+      data: { results },
+    } = await fetchTrendingFilms(evt.page);
+    refs.gallery.innerHTML = createMarkupCards(results);
+    Notiflix.Loading.remove(250);
+  } catch (err) {
+    console.log(err, 'error here');
+  }
 });
 
 // export const paginationSearch = new Pagination(container, options);
