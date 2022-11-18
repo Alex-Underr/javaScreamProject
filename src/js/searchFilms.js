@@ -32,9 +32,7 @@ const searchFilmData = async event => {
   }
 };
 if (refs.gallery) {
-  // Notiflix.Loading.pulse();
   refs.searchBtn.addEventListener('submit', searchFilmData);
 
   return;
 }
-// Notiflix.Loading.remove();

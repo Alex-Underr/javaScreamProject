@@ -1,4 +1,3 @@
-import Notiflix from 'notiflix';
 import { fetchTrendingFilms } from './fetch';
 import { createMarkupCards } from '../markup/markup';
 import { refs } from './refs';
