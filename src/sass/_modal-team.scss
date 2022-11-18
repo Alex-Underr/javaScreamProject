@@ -1,7 +1,3 @@
-body.show-modal .modal-team {
-    transform: scale(1);
-}
-
 .backdrop-team {
     overflow: scroll;
     
@@ -20,6 +16,7 @@ body.show-modal .modal-team {
         opacity: 1;
         pointer-events: initial;
         visibility: visible;
+        background-color: rgba(0, 0, 0, 0.25);
     
         @media screen and (max-width:1279px) {
             background-color: rgba(0, 0, 0, 0.25);
@@ -33,14 +30,11 @@ body.show-modal .modal-team {
 }
 
 .modal-team {
-    z-index: 999;
-background-color: white;
-    // padding: 48px 20px 40px 20px;
-    max-width: 650px;
-        max-height: 850px;
-        width: 100%;
-        height: 100%;
+    background-color: white;
     box-shadow: 8px -6px 16px -2px rgb(73 73 73 / 95%);
+    padding: 48px 20px 40px 20px;
+    max-width: 280px;
+    width: 100%;
 
     position: absolute;
     top: 20px;
@@ -48,16 +42,17 @@ background-color: white;
     transform: translateX(-50%);
 
     @media screen and (min-width:768px) {
-        max-width: 804px;
+        max-width: 704px;
         padding: 40px 72px 40px 36px;
-        top: 50%;
+        top: 80%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
     }
 
     @media screen and (min-width:1280px) {
-        max-width: 806px;
-        padding: 40px 12px;
+        max-width: 906px;
+        padding: 40px 36px;
+        top: 50%;
     }
 }
 
@@ -84,10 +79,10 @@ background-color: white;
     &:hover,
     &:focus {
         color: #ff6b08;
-        transform: scale(1.3);
+        transform: scale(1.1);
     }
-
-        @media (min-width: 1024px) {
+    
+    @media (min-width: 1024px) {
         width: 40px;
         height: 40px;
     }
@@ -104,12 +99,26 @@ background-color: white;
         font-size: 30px;
         margin-bottom: 20px;
     }
+}
 
-    // &:hover,
-    // &:focus{
-    //     color: #e86006;
-    //     // Scriptisors
-    // }
+.title-wrapper {
+    display: flex;
+    justify-content: center;
+    transition: transform 300ms;
+}
+.title-wrapper for+for,
+.title-wrapper:hover for {
+    display: none;
+    transform:translate(1.3);
+    background-color: #2AA5A0;
+    background-image: linear-gradient(90deg, #E3535D, #2AA5A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-wrapper for,
+.title-wrapper:hover for+for{
+    display: block;
 }
 
 .list-team {
@@ -138,6 +147,7 @@ background-color: white;
 
 
 .team-box {
+    position: relative;
     text-align: center;
     padding: 10px;
     width: 100%;
@@ -156,10 +166,11 @@ background-color: white;
 .avatar {
     width: 180px;
     height: 180px;
-    object-fit: cover;
-    border: 1px solid rgb(65, 65, 65);
+    object-fit:contain;
+    // border: 1px solid rgb(65, 65, 65);
     border-radius: 5%;
     margin: auto;
+    
 }
 
 
@@ -179,6 +190,32 @@ background-color: white;
     color: #ff6b08;
 
     @media (min-width: 1024px) {
-        font-size: 18px;
+        font-size: 16px;
     }
+}
+
+.git-icon-wrapper{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    width: 100%;
+    height: 33px;
+    padding: 2px;
+    margin: 0;
+    background-color: white;
+    bottom: -10px;
+    left: 0;
+    transition: all .5s cubic-bezier(.4, 0, .2, 1);
+    opacity: 0;
+    border-radius: 15%;
+}
+
+.team-box:hover .git-icon-wrapper{
+    bottom: 0;
+    opacity: 1;
+}
+
+.git-icon{
+    fill: black;
 }
