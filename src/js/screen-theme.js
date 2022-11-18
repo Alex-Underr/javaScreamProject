@@ -18,8 +18,10 @@ function onStart() {
   let status = loadFromLocStorage('theme');
   if (status === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
+    toggleSwitch.checked = true;
   } else {
     document.documentElement.setAttribute('data-theme', 'light');
+    toggleSwitch.checked = false;
   }
 }
 
