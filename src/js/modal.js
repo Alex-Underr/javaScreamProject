@@ -16,21 +16,22 @@ refs.gallery.addEventListener('click', handleOpenModal);
 // }
 
 async function handleOpenModal(event) {
+  Notiflix.Loading.pulse();
   if (
     !event.target.parentNode.classList.contains('movie__item') &&
     !event.target.parentNode.classList.contains('movie__details')
   ) {
     return;
   }
-  Notiflix.Loading.pulse();
   refs.backdropEl.classList.remove('is-hidden');
+
   document.addEventListener('keydown', closeModal, { once: true });
   try {
     const idOfCard = event.target.parentNode.dataset.id;
     const { data } = await fetchByMovieId(idOfCard);
     const createModal = await createElementOfModal(data);
     refs.backdropEl.innerHTML = createModal;
-
+    Notiflix.Loading.remove(250);
     const watchedBtnEl = document.querySelector('.js__btn__watched');
     const ququedBtnEl = document.querySelector('.js__btn__queue');
     const filmCardEl = document.querySelector('.btn__trailer');
@@ -55,7 +56,6 @@ async function handleOpenModal(event) {
   } catch (err) {
     console.log(err);
   }
-  Notiflix.Loading.remove();
 }
 function handleAddInWatchedList({ target }) {
   const watchedBtnId = target.dataset.id;
@@ -93,12 +93,14 @@ async function onPlayTrailer(event) {
   if (!event.target.classList.contains('btn__trailer')) return;
   try {
     const id = event.target.dataset.id;
+    Notiflix.Loading.pulse();
     const filmLink = await fetchSMovieTrailer(id);
     console.log(filmLink.data.results[0].key);
     const instance = basicLightbox.create(`
     <iframe src="https://www.youtube.com/embed/${filmLink.data.results[0].key}" width="560" height="315" frameborder="0"></iframe>
 `);
     instance.show();
+    Notiflix.Loading.remove(250);
   } catch (error) {
     console.log(error);
   }
