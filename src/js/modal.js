@@ -16,7 +16,6 @@ refs.gallery.addEventListener('click', handleOpenModal);
 // }
 
 async function handleOpenModal(event) {
-  Notiflix.Loading.pulse();
   if (
     !event.target.parentNode.classList.contains('movie__item') &&
     !event.target.parentNode.classList.contains('movie__details')
@@ -24,7 +23,7 @@ async function handleOpenModal(event) {
     return;
   }
   refs.backdropEl.classList.remove('is-hidden');
-
+  Notiflix.Loading.pulse();
   document.addEventListener('keydown', closeModal, { once: true });
   try {
     const idOfCard = event.target.parentNode.dataset.id;
