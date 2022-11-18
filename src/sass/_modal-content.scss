@@ -80,7 +80,6 @@
   }
   @media screen and (min-width: 1280px) {
     min-width: 136px;
-    margin-left: 8px;
   }
   &__wrapper {
     display: flex;
@@ -150,4 +149,21 @@
   background-color: #ff6b01;
   border-radius: 5px;
   padding: 0 9px 0 10px;
+}
+
+.btn__wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn__trailer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 110px;
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 136px;
+  }
 }
