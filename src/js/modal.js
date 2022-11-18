@@ -3,7 +3,7 @@ import { fetchByMovieId, fetchSMovieTrailer } from './fetch';
 import { refs } from './refs';
 import * as lsModule from './local-storage';
 import * as basicLightbox from 'basiclightbox';
-
+import Notiflix from 'notiflix';
 
 refs.backdropEl.addEventListener('click', closeModal);
 
@@ -22,6 +22,7 @@ async function handleOpenModal(event) {
   ) {
     return;
   }
+  Notiflix.Loading.pulse();
   refs.backdropEl.classList.remove('is-hidden');
   document.addEventListener('keydown', closeModal, { once: true });
   try {
@@ -36,10 +37,14 @@ async function handleOpenModal(event) {
     filmCardEl.addEventListener('click', onPlayTrailer);
 
     if (location.href.indexOf('library') !== -1) {
-      watchedBtnEl.textContent = "Delete from watched list"
-      ququedBtnEl.textContent = "Delete from queue list";
-      watchedBtnEl.addEventListener('click', handleremoveFromWatched, {once: true});
-      ququedBtnEl.addEventListener('click', handleremoveFromQuuue, {once: true});
+      watchedBtnEl.textContent = 'Delete from watched list';
+      ququedBtnEl.textContent = 'Delete from queue list';
+      watchedBtnEl.addEventListener('click', handleremoveFromWatched, {
+        once: true,
+      });
+      ququedBtnEl.addEventListener('click', handleremoveFromQuuue, {
+        once: true,
+      });
       return;
     }
 
@@ -50,6 +55,7 @@ async function handleOpenModal(event) {
   } catch (err) {
     console.log(err);
   }
+  Notiflix.Loading.remove();
 }
 function handleAddInWatchedList({ target }) {
   const watchedBtnId = target.dataset.id;
@@ -61,13 +67,12 @@ function handleAddInQueue({ target }) {
   lsModule.addToQueueLibrary(ququedBtnId);
 }
 
-function handleremoveFromWatched ({target}){
+function handleremoveFromWatched({ target }) {
   const watchedBtnId = target.dataset.id;
   lsModule.removeFromWatched(watchedBtnId);
-  
 }
 
-function handleremoveFromQuuue ({target}){
+function handleremoveFromQuuue({ target }) {
   const ququedBtnId = target.dataset.id;
   lsModule.removeFromQueue(ququedBtnId);
 }
