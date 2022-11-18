@@ -6,14 +6,8 @@ import * as basicLightbox from 'basiclightbox';
 import Notiflix from 'notiflix';
 
 refs.backdropEl.addEventListener('click', closeModal);
-
-// if(!refs.gallery){
-//   document.removeEventListener('click', handleOpenModal);
-//   refs.galleryLib.addEventListener('click', handleOpenModal);
-// }else {
-document.removeEventListener('click', handleOpenModal);
 refs.gallery.addEventListener('click', handleOpenModal);
-// }
+
 
 async function handleOpenModal(event) {
   if (
