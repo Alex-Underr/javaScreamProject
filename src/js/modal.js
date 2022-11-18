@@ -23,14 +23,16 @@ async function handleOpenModal(event) {
     return;
   }
   refs.backdropEl.classList.remove('is-hidden');
-  Notiflix.Loading.pulse();
+  Notiflix.Loading.pulse({
+    backgroundColor: 'rgba(0,0,0,0)',
+  });
   document.addEventListener('keydown', closeModal, { once: true });
   try {
     const idOfCard = event.target.parentNode.dataset.id;
     const { data } = await fetchByMovieId(idOfCard);
     const createModal = await createElementOfModal(data);
     refs.backdropEl.innerHTML = createModal;
-    Notiflix.Loading.remove(250);
+    Notiflix.Loading.remove();
     const watchedBtnEl = document.querySelector('.js__btn__watched');
     const ququedBtnEl = document.querySelector('.js__btn__queue');
     const filmCardEl = document.querySelector('.btn__trailer');
