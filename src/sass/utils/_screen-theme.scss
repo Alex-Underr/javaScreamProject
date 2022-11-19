@@ -60,9 +60,14 @@ body {
 .modal-team {
   background-color: var(--bg-color-modal);
 }
-
-.git-icon-wrapper{
-  background-color: var(--bg-color-footer);
+.team-box:hover {
+  background-color: var(--bg-color);
+}
+.git-icon-wrapper {
+  background-color: var(--bg-color);
+}
+.git-icon-wrapper:hover {
+  background-color: var(--bg-color);
 }
 //////////////// toggle-button settings
 
