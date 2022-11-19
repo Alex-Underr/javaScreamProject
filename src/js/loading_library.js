@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import { fetchByMovieId } from './fetch';
 import { createMarkupCardsForLibrary } from '../markup/markup-library-card';
 import { refs } from './refs';
@@ -9,6 +10,7 @@ import {
 import * as lsModule from './local-storage';
 
 function startPageLibrary() {
+  Notiflix.Loading.pulse();
   refs.gallery.innerHTML = '';
 
   let watchedLibrary = localStorage.getItem('watched')
@@ -36,6 +38,7 @@ function startPageLibrary() {
           'beforeend',
           createMarkupCardsForLibrary(res.data)
         );
+        Notiflix.Loading.remove();
       })
       .catch(err => console.log('Catched error >>> ', err));
   });
