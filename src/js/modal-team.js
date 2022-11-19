@@ -1,9 +1,7 @@
 import { refs } from './refs';
 
 refs.openModalBtn.addEventListener('click', onOpenModal)
-// refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onCloseModal);
-// document.addEventListener('keydown', onEsc);
 
 
 function onOpenModal() {
@@ -17,25 +15,6 @@ function onCloseModal({target, code}) {
     return;
   }
   refs.backdrop.classList.add('is-hidden');
-  // window.removeEventListener('keydown', onEsc);
-
+  
 }
 
-// function onEsc(event) {
-//   if (event.code !== 'Escape') {
-//     return
-//   }
-//   onCloseModal();
-// }
-
-// function onBackdropClick(event) {
-//   if (event.currentTarget === event.target) {
-//     onCloseModal();
-//   }
-// }
-
-// function onEsc(event) {
-//   if (event.code === 'Escape') {
-//     onCloseModal();
-//   }
-// }

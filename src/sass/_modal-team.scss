@@ -30,11 +30,11 @@
 }
 
 .modal-team {
-  // background-color: white;
   box-shadow: 8px -6px 16px -2px rgb(73 73 73 / 95%);
   padding: 48px 20px 40px 20px;
   max-width: 280px;
   width: 100%;
+  border-radius: 1%;
 
   position: absolute;
   top: 20px;
@@ -150,7 +150,6 @@
   text-align: center;
   padding: 10px;
   width: 100%;
-  // color: black;
   float: left;
   border-radius: 5%;
   transition: transform 300ms ease-in-out 0s, box-shadow 300ms ease-in-out 0s;
@@ -165,7 +164,7 @@
 .avatar {
   width: 180px;
   height: 180px;
-  object-fit: contain;
+  object-fit:cover;
   // border: 1px solid rgb(65, 65, 65);
   border-radius: 5%;
   margin: auto;
