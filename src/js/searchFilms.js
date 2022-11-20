@@ -31,9 +31,10 @@ const searchFilmData = async event => {
 
     refs.errorString.classList.add('p__hidden');
     Notiflix.Loading.pulse();
-    Notiflix.Notify.info(`We found for you ${data.results.length} films!`, {
+    Notiflix.Notify.info(`We found for you ${data.total_results} films!`, {
       once: true,
     });
+    // console.log(createMarkupCards(data.results));
     refs.gallery.innerHTML = createMarkupCards(data.results);
     Notiflix.Loading.remove(250);
   } catch (err) {

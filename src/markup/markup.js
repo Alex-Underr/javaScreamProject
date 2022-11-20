@@ -1,12 +1,19 @@
 import { findGenreName, genresList } from '../js/genres-list';
 
+const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
+
 export function createMarkupCards(data) {
   const markup = data
     .map(({ poster_path, id, title, genre_ids, release_date }) => {
+      const firstTry = `${IMG_URL}${poster_path}`;
+      const poster = firstTry.includes('null')
+        ? './image/no-movie-poster.jpg'
+        : `${IMG_URL}${poster_path}`;
+      // console.log(poster);
       const genres = findGenreName(genresList, genre_ids).join(', ');
       return `
   <li data-id="${id}" class="movie__item">
-    <img class="movie__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="Poster of '${title}' movie" width="394" />
+    <img class="movie__image" src="${poster}" alt="Poster of '${title}' movie" width="394" />
     <h2 class="movie__title">${title}</h2>
     <p data-id="${id}" class="movie__details">
         <span class="movie__genre">${genres}</span
