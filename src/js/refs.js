@@ -3,6 +3,7 @@ export const refs = {
   gallery: document.querySelector('.js-movie-gallery'),
   notifi: document.querySelector('.js-notification'),
   searchBtn: document.querySelector('.search__form'),
+  searchInput: document.querySelector('.search__input'),
   errorString: document.querySelector('.p__header'),
   footer: document.querySelector('footer'),
   container: document.getElementById('pagination'),
