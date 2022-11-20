@@ -1,19 +1,14 @@
 import Pagination from 'tui-pagination';
-import debounce from 'lodash.debounce';
 import {
   fetchTrendingFilms,
   fetchSearchFilms,
-  fetchByMovieId,
-  fetchSMovieTrailer,
 } from './fetch';
 
 import { createMarkupCards } from '../markup/markup';
 import { refs } from './refs';
 import Notiflix from 'notiflix';
+import { scrollToTop } from '../js/top-page'
 
-const search = document.querySelector('.search__form');
-const form = document.querySelector('.search__input');
-const DEBOUNCE_DELAY = 500;
 const PER_PAGE = 20;
 
 const container = document.getElementById('pagination');
@@ -45,7 +40,9 @@ const options = {
 };
 
 export const pagination = new Pagination(container, options);
-
+pagination.on('beforeMove', function () {
+  refs.gallery.innerHTML = '';
+});
 pagination.on('afterMove', async function (evt) {
   try {
     Notiflix.Loading.pulse();
@@ -53,55 +50,68 @@ pagination.on('afterMove', async function (evt) {
       data: { results },
     } = await fetchTrendingFilms(evt.page);
     refs.gallery.innerHTML = createMarkupCards(results);
+
+    pagination.on('afterMove', scrollToTop);
     Notiflix.Loading.remove(250);
   } catch (err) {
     console.log(err, 'error here');
   }
 });
 
-// export const paginationSearch = new Pagination(container, options);
-// // paginationSearch.on('beforeMove', function () {
-// //   collectionEl.innerHTML = '';
-// // });
-// paginationSearch.on('afterMove', async function (evt) {
-//   const moviesByKeyWord = await fetchSearchFilms(inputValue, evt.page);
 
-//   refs.gallery.innerHTML = createMarkupCards(moviesByKeyWord);
-// });
+export const paginationSearch = new Pagination(container, options);
+let inputValue;
 
-// let inputValue;
+export async function onFormInput(evt) {
+  inputValue = evt.target.value;
+  evt.preventDefault();
+  if (evt.target.value === '') {
+    return searchFilmData();
+  }
+    if (inputValue === ' ') {
+      return;
+  }
 
-// form.addEventListener('input', debounce(onFormInput, DEBOUNCE_DELAY));
+  refs.gallery.textContent = '';
 
-// export async function onFormInput(evt) {
-//   inputValue = evt.target.value;
-//   evt.preventDefault();
-//   if (evt.target.value === '') {
-//     return searchFilmData();
-//   }
-//     if (inputValue === ' ') {
-//       return;
-//   }
+  paginationSearch.reset();
+  let page = 1;
+  const moviesByKeyWord = await fetchSearchFilms(inputValue, page);
+  const loadGenres = await fetchTrendingFilms();
+  if (moviesByKeyWord.total_results === 0) {
+    console.log();
+  }
+  if (moviesByKeyWord.total_results > 0) {
+    console.log(moviesByKeyWord.total_results);
+  }
+  container.classList.remove('visually-hidden');
 
-//   gallery.textContent = '';
+  createMarkupCards(moviesByKeyWord, fetchTrendingFilms);
 
-//   paginationSearch.reset();
-//   let page = 1;
-//   const moviesByKeyWord = await fetchMoviesSearchQuery(inputValue, page);
-//   const loadGenres = await fetchGenres();
-//   if (moviesByKeyWord.total_results === 0) {
-//     failure();
-//   }
-//   if (moviesByKeyWord.total_results > 0) {
-//     success(moviesByKeyWord.total_results);
-//   }
-//   container.classList.remove('visually-hidden');
+  if (moviesByKeyWord.total_results < 20) {
+    container.classList.add('visually-hidden');
+  } else {
+    container.classList.remove('visually-hidden');
+  }
+};
 
-//   renderMarkup(moviesByKeyWord, loadGenres);
+paginationSearch.on('beforeMove', function (evt) {
+  refs.gallery.innerHTML = '';
+});
+paginationSearch.on('afterMove', async function (evt) {
 
-//   if (moviesByKeyWord.total_results < 20) {
-//     container.classList.add('visually-hidden');
-//   } else {
-//     container.classList.remove('visually-hidden');
-//   }
-// };
+  try {
+    Notiflix.Loading.pulse();
+    const {
+      data: { results },
+    } = await fetchSearchFilms(inputValue, evt.page);
+    refs.gallery.innerHTML = createMarkupCards(results);
+
+    Notiflix.Loading.remove(250);
+  } catch (err) {
+    console.log(err, 'error here');
+  }
+
+  
+
+});
