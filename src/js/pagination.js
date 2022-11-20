@@ -44,8 +44,9 @@ pagination.on('beforeMove', async function (evt) {
       Notiflix.Loading.pulse();
       const { data } = await fetchSearchFilms(userInput, evt.page);
       refs.gallery.innerHTML = createMarkupCards(data.results);
-
+      console.log(data);
       Notiflix.Loading.remove(250);
+      pagination.setTotalItems(data.total_results);
     } else {
       Notiflix.Loading.pulse();
       const { data } = await fetchTrendingFilms(evt.page);

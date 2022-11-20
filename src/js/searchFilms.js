@@ -24,7 +24,7 @@ const searchFilmData = async event => {
     const { data } = await fetchSearchFilms(query, page);
 
     if (!data.results.length) {
-      refs.gallery.innerHTML = '';
+      // refs.gallery.innerHTML = '';
       refs.errorString.classList.remove('p__hidden');
       return;
     }
