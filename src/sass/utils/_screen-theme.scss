@@ -69,6 +69,10 @@ body {
 .git-icon-wrapper:hover {
   background-color: var(--bg-color);
 }
+
+.git-icon {
+  fill: var(--text-color);
+}
 //////////////// toggle-button settings
 
 .toggle-button {
