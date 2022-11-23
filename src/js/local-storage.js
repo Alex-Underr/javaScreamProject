@@ -55,7 +55,7 @@ export function removeFromWatched (id){
   }
   watchedLibrary.splice(indexOfId, 1);
   saveToLocStorage('watched', watchedLibrary);
-  document.location.reload();
+  
 }
 
 export function removeFromQueue (id){ 
@@ -66,5 +66,5 @@ export function removeFromQueue (id){
   }
   queueLibrary.splice(indexOfId, 1);
   saveToLocStorage('queue', queueLibrary);
-  document.location.reload();
+  
 }

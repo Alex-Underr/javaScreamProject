@@ -9,7 +9,7 @@ import {
 } from './type-writer-effect';
 import * as lsModule from './local-storage';
 
-function startPageLibrary() {
+export function startPageLibrary() {
   refs.gallery.innerHTML = '';
 
   let watchedLibrary = localStorage.getItem('watched')
